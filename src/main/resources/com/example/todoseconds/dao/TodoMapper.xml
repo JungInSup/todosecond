@@ -24,4 +24,12 @@
         select * from tbl_todo where tno = #{tno}
     </select>
 
+    <select id="getList" resultType="com.example.todoseconds.dto.TodoDTO">
+        select * from tbl_todo order by tno desc limit #{skip}, #{size}
+    </select>
+
+    <select id="getTotal" resultType="int">
+        select count(tno) from tbl_todo
+    </select>
+
 </mapper>
