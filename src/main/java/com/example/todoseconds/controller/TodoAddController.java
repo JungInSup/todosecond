@@ -1,6 +1,7 @@
 package com.example.todoseconds.controller;
 
 import com.example.todoseconds.dao.MyBatisUtil;
+import com.example.todoseconds.dao.TodoDAO;
 import com.example.todoseconds.dto.TodoDTO;
 import org.apache.ibatis.session.SqlSession;
 
@@ -27,11 +28,13 @@ public class TodoAddController extends HttpServlet {
                 .dueDate(LocalDate.parse((request.getParameter("dueDate"))))
                 .build();
 
-        SqlSession session = MyBatisUtil.INSTANCE.getSqlSessionFactory().openSession(true);
+        //SqlSession session = MyBatisUtil.INSTANCE.getSqlSessionFactory().openSession(true);
 
-        session.insert("com.example.todoseconds.dao.TodoMapper.insert", dto);
+        //session.insert("com.example.todoseconds.dao.TodoMapper.insert", dto);
 
-        response.sendRedirect("todo/list");
+        TodoDAO.INSTANCE.Insert(dto);
+
+        response.sendRedirect("/todo/list");
 
     }
 }

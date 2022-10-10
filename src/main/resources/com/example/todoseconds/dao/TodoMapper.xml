@@ -9,7 +9,7 @@
     </select>
 
     <insert id="insert">
-        insert into tbl_todo(title, memo, dueDate) values('testtest', 'memomemo', '2024-03-03')
+        insert into tbl_todo(title, memo, dueDate) values(#{title}, #{memo}, #{dueDate})
     </insert>
 
     <delete id="delete">

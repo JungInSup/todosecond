@@ -6,6 +6,7 @@ import com.example.todoseconds.dto.TodoDTO;
 import lombok.Cleanup;
 import org.apache.ibatis.session.SqlSession;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public enum TodoDAO {
@@ -61,6 +62,14 @@ public enum TodoDAO {
         @Cleanup SqlSession session = MyBatisUtil.INSTANCE.getSqlSessionFactory().openSession();
 
         session.selectOne("com.example.todoseconds.dao.TodoMapper.delete", tno);
+
+    }
+
+    public void Insert(TodoDTO dto) {
+
+        @Cleanup SqlSession session = MyBatisUtil.INSTANCE.getSqlSessionFactory().openSession(true);
+
+        session.insert("com.example.todoseconds.dao.TodoMapper.insert", dto);
 
     }
 }
